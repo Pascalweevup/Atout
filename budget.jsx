@@ -5,45 +5,45 @@ const budgetData = {
     cite: { 
         id: 'cite',
         name: "Cité Internationale", 
-        totalTTC: 152140.13, 
-        totalHT: 126876.39, 
-        honorairesHT: 11534.22, 
+        totalTTC: 149996.38, 
+        totalHT: 125089.93, 
+        honorairesHT: 11371.81, 
         categories: { 
-            lieux: 39903.01, 
-            restauration: 27173.64, 
-            technique: 14733.65, 
+            lieux: 38966.56, 
+            restauration: 26701.05, 
+            technique: 14518.63, 
             transports: 7800.00, 
             extras: 21416.88, 
             accompagnement: 4315.00 
         },
         details: {
             lieux: [
-                { desc: "Location de salle ateliers Hôtel Novotel Porte d'Orléans", price: 3889.09 },
-                { desc: "Location de salle vestiaire La Cité Internationale", price: 747.50 },
-                { desc: "Location de salle cérémonie La Cité Internationale", price: 14605.00 },
-                { desc: "Location de salle cocktail La Cité Internationale", price: 5100.00 },
-                { desc: "Nuitées Novotel Porte d'Orléans (60 pax)", price: 15054.42 },
+                { desc: "Location de salle ateliers Hotel Novotel Porte d'Orléans", price: 3821.46 },
+                { desc: "Location de salle vestiaire La Cité Internationale", price: 734.50 },
+                { desc: "Location de salle cérémonie La Cité Internationale", price: 14351.00 },
+                { desc: "Location de salle cocktail La Cité Internationale", price: 4760.00 },
+                { desc: "Nuitées Novotel Porte d'Orléans (60 pax)", price: 14792.60 },
                 { desc: "Taxe de séjour (60 pax)", price: 507.00 }
             ],
             restauration: [
-                { desc: "Déjeuner d'équipe Doda Restaurant", price: 595.99 },
-                { desc: "Pause permanente gourmande ateliers", price: 1066.05 },
-                { desc: "Cocktail dînatoire - repas et softs", price: 20700.00 },
-                { desc: "Cocktail dînatoire - boissons alcoolisées", price: 4600.00 },
-                { desc: "Cocktail dînatoire - mobilier", price: 211.60 }
+                { desc: "Déjeuner d'équipe Doda Restaurant", price: 585.62 },
+                { desc: "Pause permanente gourmande ateliers", price: 1047.51 },
+                { desc: "Cocktail dînatoire - repas et softs", price: 20340.00 },
+                { desc: "Cocktail dînatoire - boissons alcoolisées", price: 4520.00 },
+                { desc: "Cocktail dînatoire - mobilier", price: 207.92 }
             ],
             technique: [
-                { desc: "Technique cérémonie (Forfait de base)", price: 1805.50 },
-                { desc: "Complément technique cérémonie", price: 5216.40 },
-                { desc: "Régisseur général cérémonie", price: 1955.00 },
+                { desc: "Technique cérémonie (Forfait de base)", price: 1774.10 },
+                { desc: "Complément technique cérémonie", price: 5125.68 },
+                { desc: "Régisseur général cérémonie", price: 1921.00 },
                 { desc: "Topeur", price: 1875.00 },
-                { desc: "Forfait mobilier scénique cérémonie", price: 258.75 },
-                { desc: "Régie sanitaire cérémonie", price: 345.00 },
-                { desc: "Éclairage d'ambiance cocktail", price: 690.00 },
+                { desc: "Forfait mobilier scénique cérémonie", price: 254.25 },
+                { desc: "Régie sanitaire cérémonie", price: 684.00 },
+                { desc: "Éclairage d'ambiance cocktail", price: 452.00 },
                 { desc: "Transport de matériel", price: 150.00 },
-                { desc: "Agent de sécurité", price: 1035.00 },
-                { desc: "Hôtes(ses) accueil et vestiaire", price: 1288.00 },
-                { desc: "Infographiste", price: 600.00 }
+                { desc: "Agent de sécurité", price: 1017.00 },
+                { desc: "Hôtes(ses) accueil et vestiaire", price: 1265.60 },
+                { desc: "Infographiste (Option)", price: 600.00 }
             ],
             transports: [
                 { desc: "Provision transports", price: 6000.00 },

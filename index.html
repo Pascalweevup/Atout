@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,8 +27,15 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .animate-fade-in {
@@ -35,12 +43,26 @@
         }
 
         /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
     </style>
 </head>
+
 <body>
     <div id="root"></div>
 
@@ -49,206 +71,206 @@
 
         // --- DATA EXTRACTED FROM PDFs ---
         const budgetData = {
-            cite: { 
+            cite: {
                 id: 'cite',
-                name: "Cité Internationale", 
-                totalTTC: 149996.38, 
-                totalHT: 125089.93, 
-                honorairesHT: 11371.81, 
-                categories: { 
-                    lieux: 38966.56, 
-                    restauration: 26701.05, 
-                    technique: 14518.63, 
-                    transports: 7800.00, 
-                    extras: 21416.88, 
-                    accompagnement: 4315.00 
+                name: "Cité Internationale",
+                totalTTC: 149996.38,
+                totalHT: 125089.93,
+                honorairesHT: 11371.81,
+                categories: {
+                    lieux: 38966.56,
+                    restauration: 26701.05,
+                    technique: 14518.63,
+                    transports: 7800.00,
+                    extras: 21416.88,
+                    accompagnement: 4315.00
                 },
                 details: {
                     lieux: [
-                        { desc: "Location de salle ateliers Hotel Novotel Porte d'Orléans", price: 3821.46 },
-                        { desc: "Location de salle vestiaire La Cité Internationale", price: 734.50 },
-                        { desc: "Location de salle cérémonie La Cité Internationale", price: 14351.00 },
-                        { desc: "Location de salle cocktail La Cité Internationale", price: 4760.00 },
-                        { desc: "Nuitées Novotel Porte d'Orléans (60 pax)", price: 14792.60 },
-                        { desc: "Taxe de séjour (60 pax)", price: 507.00 }
+                        { desc: "Location de salle ateliers Hotel Novotel Porte d'Orléans", price: 3821.46, subDesc: "Privatisation de 3 salons (deux de 90m², un de 60m²) avec écran, vidéo projecteur, paperboard, matériel orateur, eau plate et gazeuse et accès WIFI avec connexion fibre" },
+                        { desc: "Location de salle vestiaire La Cité Internationale", price: 734.50, subDesc: "La Cité Internationale Universitaire : vestiaire du hall" },
+                        { desc: "Location de salle cérémonie La Cité Internationale", price: 14351.00, subDesc: "La Cité Internationale Universitaire : privatisation du Salon Honnorat (400m2)" },
+                        { desc: "Location de salle cocktail La Cité Internationale", price: 4760.00, subDesc: "La Cité Internationale Universitaire : privatisation jusqu'à 23h de la Fondation Deutsch de la Meurthe (Le Grand Salon)" },
+                        { desc: "Nuitées Novotel Porte d'Orléans (60 pax)", price: 14792.60, subDesc: "Chambre Supérieure Single BB, petit-déjeuner inclus" },
+                        { desc: "Taxe de séjour (60 pax)", price: 507.00, subDesc: "Novotel Porte d'Orléans" }
                     ],
                     restauration: [
-                        { desc: "Déjeuner d'équipe Doda Restaurant", price: 585.62 },
-                        { desc: "Pause permanente gourmande ateliers", price: 1047.51 },
-                        { desc: "Cocktail dînatoire - repas et softs", price: 20340.00 },
+                        { desc: "Déjeuner d'équipe Doda Restaurant", price: 585.62, subDesc: "Doda Restaurant (Hôtel Novotel Porte d'Orléans)" },
+                        { desc: "Pause permanente gourmande ateliers", price: 1047.51, subDesc: "Hôtel Novotel Porte d'Orléans\nDe 13h à 17h : cafés Nespresso, set d’infusions & thés Kusmi Tea, jus de fruit frais, fruit de saison accompagné viennoiseries et de mignardises sucrées et salées" },
+                        { desc: "Cocktail dînatoire - repas et softs", price: 20340.00, subDesc: "Minimum de facturation exigé par le lieu à hauteur de 18 000€ HT" },
                         { desc: "Cocktail dînatoire - boissons alcoolisées", price: 4520.00 },
                         { desc: "Cocktail dînatoire - mobilier", price: 207.92 }
                     ],
                     technique: [
-                        { desc: "Technique cérémonie (Forfait de base)", price: 1774.10 },
-                        { desc: "Complément technique cérémonie", price: 5125.68 },
-                        { desc: "Régisseur général cérémonie", price: 1921.00 },
-                        { desc: "Topeur", price: 1875.00 },
-                        { desc: "Forfait mobilier scénique cérémonie", price: 254.25 },
-                        { desc: "Régie sanitaire cérémonie", price: 684.00 },
-                        { desc: "Éclairage d'ambiance cocktail", price: 452.00 },
+                        { desc: "Technique cérémonie (Forfait de base)", price: 1774.10, subDesc: "Forfait technique de base du Salon Honnorat (Cité Internationale Universitaire) avec technicien - vidéoprojecteur - écran sur pied (2,40m x 3,25m) - 2 HF - 1 pupitre sonorisé - mobilier scénique" },
+                        { desc: "Complément technique cérémonie", price: 5125.68, subDesc: "1 VP , 2 écrans, 2 HF , 4 Bose L1, 2 PC, 4 Astera, 4 Chauvet, 4 Manfrotto, 8 câbles DMX, 1 console, 1 tablette, 1 kit PC16\n2 VL, 2 techniciens, 2 repas" },
+                        { desc: "Régisseur général cérémonie", price: 1921.00, subDesc: "Salon Honnorat (Cité Internationale Universitaire)" },
+                        { desc: "Topeur", price: 1875.00, subDesc: "Présence à la répétition et le temps de la cérémonie" },
+                        { desc: "Forfait mobilier scénique cérémonie", price: 254.25, subDesc: "Scène, chauffeuses, tables basses sur le Salon Honnorat (Cité Internationale Universitaire)" },
+                        { desc: "Régie sanitaire cérémonie", price: 684.00, subDesc: "Frais de nettoyage du Salon Honnorat (Cité Internationale Universitaire)" },
+                        { desc: "Éclairage d'ambiance cocktail", price: 452.00, subDesc: "6 Color Bat sur batteries (couleurs au choix)" },
                         { desc: "Transport de matériel", price: 150.00 },
                         { desc: "Agent de sécurité", price: 1017.00 },
-                        { desc: "Hôtes(ses) accueil et vestiaire", price: 1265.60 },
-                        { desc: "Infographiste (Option)", price: 600.00 }
+                        { desc: "Hôtes(ses) accueil et vestiaire", price: 1265.60, subDesc: "Toute heure entamée au-delà de 15mn sera facturée au réel" },
+                        { desc: "Infographiste (Option)", price: 600.00, subDesc: "Tarif à partir de 600€ HT\nInfographie du contenu de la cérémonie" }
                     ],
                     transports: [
-                        { desc: "Provision transports", price: 6000.00 },
-                        { desc: "Frais de gestion des transports", price: 1800.00 }
+                        { desc: "Provision transports", price: 6000.00, subDesc: "Billets d’avion, de train et réservation de taxi\nA ajuster au réel (prix des billets et frais d'émission des billets)" },
+                        { desc: "Frais de gestion des transports", price: 1800.00, subDesc: "3 jours de gestion" }
                     ],
                     extras: [
-                        { desc: "Animation - performance Scala & Kolacny Brothers", price: 17250.00 },
-                        { desc: "Animation - performance Salt & Pepper (Option)", price: 10680.00 },
-                        { desc: "Animation caricaturistes (Option)", price: 3562.50 },
-                        { desc: "Badges", price: 325.00 },
-                        { desc: "Photobooth", price: 2050.63 },
+                        { desc: "Animation - performance Scala & Kolacny Brothers", price: 17250.00, subDesc: "Animation de chorale par Scala & Kolacny Brothers\nPerformance du groupe durant la cérémonie (interventions à définir)" },
+                        { desc: "Animation - performance Salt & Pepper (Option)", price: 10680.00, subDesc: "Animation de chorale par Salt & Pepper\nPerformance du groupe durant la cérémonie (interventions à définir)" },
+                        { desc: "Animation caricaturistes (Option)", price: 3562.50, subDesc: "Présence de 3 caricaturistes durant le cocktail" },
+                        { desc: "Badges", price: 325.00, subDesc: "Badges sur papier recyclé pour 200 personnes" },
+                        { desc: "Photobooth", price: 2050.63, subDesc: "Borne photo avec technologie IA, habillage personnalisé et photocall dédié personnalisé" },
                         { desc: "Décoration (Option)", price: 2027.50 },
-                        { desc: "Création graphique", price: 400.00 },
-                        { desc: "Cadeaux yo-yo en bois", price: 1178.75 },
-                        { desc: "Sac kraft", price: 212.50 }
+                        { desc: "Création graphique", price: 400.00, subDesc: "Badges, affiches, invitations (hors impression, 2 aller-retours pour modification inclus)" },
+                        { desc: "Cadeaux yo-yo en bois", price: 1178.75, subDesc: "Personnalisés, infographie et frais de port inclus" },
+                        { desc: "Sac kraft", price: 212.50, subDesc: "Pour la remise du cadeau\nPersonnalisé" }
                     ],
                     accompagnement: [
-                        { desc: "Temps homme Weever", price: 3600.00 },
-                        { desc: "VRH - Restauration", price: 120.00 },
-                        { desc: "VHR - Transport", price: 195.00 },
-                        { desc: "Frais de repérage", price: 400.00 }
+                        { desc: "Temps homme Weever", price: 3600.00, subDesc: "Présence de 3 Weevers pour la gestion de votre événement" },
+                        { desc: "VRH - Restauration", price: 120.00, subDesc: "Déjeuner et dîner des Weevers sur l'événement" },
+                        { desc: "VHR - Transport", price: 195.00, subDesc: "Transport des Weevers" },
+                        { desc: "Frais de repérage", price: 400.00, subDesc: "1 Weever sur les lieux de votre choix" }
                     ]
                 }
             },
-            bnf: { 
+            bnf: {
                 id: 'bnf',
-                name: "BNF", 
-                totalTTC: 146248.87, 
-                totalHT: 121967.01, 
-                honorairesHT: 11087.91, 
-                categories: { 
-                    lieux: 32768.16, 
-                    restauration: 27350.69, 
-                    technique: 12435.00, 
-                    transports: 7800.00, 
-                    extras: 26210.25, 
-                    accompagnement: 4315.00 
+                name: "BNF",
+                totalTTC: 146248.87,
+                totalHT: 121967.01,
+                honorairesHT: 11087.91,
+                categories: {
+                    lieux: 32768.16,
+                    restauration: 27350.69,
+                    technique: 12435.00,
+                    transports: 7800.00,
+                    extras: 26210.25,
+                    accompagnement: 4315.00
                 },
                 details: {
                     lieux: [
-                        { desc: "Location de salle ateliers Marriott Rive Gauche (3 salles)", price: 7840.91 },
-                        { desc: "Location de salle cérémonie et cocktail BNF (Grand Auditorium & Foyer)", price: 8125.00 },
-                        { desc: "Nuitées Marriott Rive Gauche (60 pax)", price: 16295.25 },
+                        { desc: "Location de salle ateliers Marriott Rive Gauche (3 salles)", price: 7840.91, subDesc: "3 salles de sous-commissions" },
+                        { desc: "Location de salle cérémonie et cocktail BNF (Grand Auditorium & Foyer)", price: 8125.00, subDesc: "Cérémonie : Grand Auditorium\nCocktail : Foyer attenant" },
+                        { desc: "Nuitées Marriott Rive Gauche (60 pax)", price: 16295.25, subDesc: "Chambre Supérieure Single BB, petit-déjeuner inclus" },
                         { desc: "Taxe de séjour Marriott Rive Gauche (60 pax)", price: 507.00 }
                     ],
                     restauration: [
-                        { desc: "Déjeuner d'équipe Bistrot Palyma", price: 732.94 },
-                        { desc: "Café d'accueil ateliers Marriott Rive Gauche", price: 1023.00 },
-                        { desc: "Pause café ateliers Marriott Rive Gauche", price: 1363.50 },
-                        { desc: "Cocktail dînatoire - repas Les Retraiteurs", price: 11750.00 },
-                        { desc: "Cocktail dinatoire - boissons softs", price: 1050.00 },
-                        { desc: "Cocktail dînatoire - boissons alcoolisées", price: 4818.75 },
+                        { desc: "Déjeuner d'équipe Bistrot Palyma", price: 732.94, subDesc: "Bistrot Palyma (Marriott Rive Gauche)" },
+                        { desc: "Café d'accueil ateliers Marriott Rive Gauche", price: 1023.00, subDesc: "Foyer Studio\n2 pièces" },
+                        { desc: "Pause café ateliers Marriott Rive Gauche", price: 1363.50, subDesc: "Foyer Studio\n4 pièces" },
+                        { desc: "Cocktail dînatoire - repas Les Retraiteurs", price: 11750.00, subDesc: "Forfait incluant un cocktail 19 pièces, animations culinaires salées, le service et le matériel et mobilier de service" },
+                        { desc: "Cocktail dinatoire - boissons softs", price: 1050.00, subDesc: "Eaux, limonades et jus de fruits" },
+                        { desc: "Cocktail dînatoire - boissons alcoolisées", price: 4818.75, subDesc: "Sélection de vins et champagne, incluant la verrerie" },
                         { desc: "Cocktail dînatoire - Mobilier", price: 6612.50 }
                     ],
                     technique: [
-                        { desc: "Audiovisuel (Forfait écrans, sonorisation, lumière)", price: 7907.50 },
+                        { desc: "Audiovisuel (Forfait écrans, sonorisation, lumière)", price: 7907.50, subDesc: "Forfait écrans, sonorisation et lumière, incluant le matériel, le personnel et la logistique pour l'ensemble des espaces" },
                         { desc: "Topeur", price: 1875.00 },
-                        { desc: "Agent de sécurité", price: 250.00 },
-                        { desc: "Hôtes(ses) étudiants et retraités", price: 1750.00 },
+                        { desc: "Agent de sécurité", price: 250.00, subDesc: "Environ 23 euros HT de 06h à 21h et 25 euros HT de 21h à 6h pour une prestation minimum de 4h" },
+                        { desc: "Hôtes(ses) étudiants et retraités", price: 1750.00, subDesc: "Pour l'accueil et le vestiaire" },
                         { desc: "Matériel de vestiaire", price: 300.00 },
-                        { desc: "Frais de personnel heure de jour", price: 80.00 },
-                        { desc: "Frais de personnel heure de nuit", price: 122.50 },
+                        { desc: "Frais de personnel heure de jour", price: 80.00, subDesc: "Estimation tarifaire soumise à évolution\nFrais de personnel après 19h" },
+                        { desc: "Frais de personnel heure de nuit", price: 122.50, subDesc: "Estimation tarifaire soumise à évolution\nFrais de personnel après 22h" },
                         { desc: "Transport de matériel", price: 150.00 },
-                        { desc: "Infographiste (Option)", price: 600.00 }
+                        { desc: "Infographiste (Option)", price: 600.00, subDesc: "A partir de" }
                     ],
                     transports: [
-                        { desc: "Provision transports", price: 6000.00 },
-                        { desc: "Frais de gestion des transports", price: 1800.00 }
+                        { desc: "Provision transports", price: 6000.00, subDesc: "Billets d’avion, de train et réservation de taxi\nA ajuster au réel (prix des billets et frais d'émission des billets)" },
+                        { desc: "Frais de gestion des transports", price: 1800.00, subDesc: "3 jours de gestion" }
                     ],
                     extras: [
                         { desc: "Animation - Julien Lepers", price: 8450.00 },
                         { desc: "Animation - Écriture du quiz", price: 1950.00 },
                         { desc: "Animation - Matériel du quiz", price: 4862.00 },
                         { desc: "Animation - Mentaliste", price: 1950.00 },
-                        { desc: "Badges", price: 325.00 },
-                        { desc: "Photobooth", price: 1613.13 },
+                        { desc: "Badges", price: 325.00, subDesc: "Badges sur papier recyclé pour 200 personnes" },
+                        { desc: "Photobooth", price: 1613.13, subDesc: "Borne photo avec technologie IA et habillage personnalisé" },
                         { desc: "Décoration", price: 2730.63 },
-                        { desc: "Création graphique", price: 750.00 },
-                        { desc: "Intervention Oldyssey", price: 2340.00 },
-                        { desc: "Cadeaux livres", price: 1027.00 },
-                        { desc: "Sac kraft", price: 212.50 }
+                        { desc: "Création graphique", price: 750.00, subDesc: "Badges, quiz, affiches, invitations (hors impression, 2 aller-retours pour modification inclus)" },
+                        { desc: "Intervention Oldyssey", price: 2340.00, subDesc: "En présence de Clément Boxebeld, fondateur de Oldyssey" },
+                        { desc: "Cadeaux livres", price: 1027.00, subDesc: "Vieillir ensemble. Un tour du monde des solutions qui rapprochent les générations" },
+                        { desc: "Sac kraft", price: 212.50, subDesc: "Pour la remise du cadeau\nPersonnalisé" }
                     ],
                     accompagnement: [
-                        { desc: "Temps homme Weever", price: 3600.00 },
-                        { desc: "VRH - Restauration", price: 120.00 },
-                        { desc: "VHR - Transport", price: 195.00 },
-                        { desc: "Frais de repérage", price: 400.00 }
+                        { desc: "Temps homme Weever", price: 3600.00, subDesc: "Présence de 3 Weevers pour la gestion de votre événement" },
+                        { desc: "VRH - Restauration", price: 120.00, subDesc: "Déjeuner et dîner des Weevers sur l'événement" },
+                        { desc: "VHR - Transport", price: 195.00, subDesc: "Transport des Weevers" },
+                        { desc: "Frais de repérage", price: 400.00, subDesc: "1 Weever sur les lieux de votre choix" }
                     ]
                 }
             },
-            cirque: { 
+            cirque: {
                 id: 'cirque',
-                name: "Cirque d'Hiver", 
-                totalTTC: 149335.58, 
-                totalHT: 124507.14, 
-                honorairesHT: 11318.83, 
-                categories: { 
-                    lieux: 40191.73, 
-                    restauration: 23339.39, 
-                    technique: 27265.72, 
-                    transports: 7800.00, 
-                    extras: 10276.48, 
-                    accompagnement: 4315.00 
+                name: "Cirque d'Hiver",
+                totalTTC: 149335.58,
+                totalHT: 124507.14,
+                honorairesHT: 11318.83,
+                categories: {
+                    lieux: 40191.73,
+                    restauration: 23339.39,
+                    technique: 27265.72,
+                    transports: 7800.00,
+                    extras: 10276.48,
+                    accompagnement: 4315.00
                 },
                 details: {
                     lieux: [
-                        { desc: "Location de la verrière ateliers (Hôtel Provinces Opéra)", price: 252.08 },
-                        { desc: "Location de salles ateliers (4 salles, Hôtel Provinces Opéra)", price: 2016.68 },
-                        { desc: "Location de salle cérémonie et cocktail (Cirque d'Hiver)", price: 24200.00 },
-                        { desc: "Nuitée Chambre individuelle Confort", price: 3018.37 },
-                        { desc: "Nuitée Chambre individuelle Privilège", price: 1352.97 },
-                        { desc: "Nuitée Chambre double Confort à usage individuel", price: 9019.82 },
+                        { desc: "Location de la verrière ateliers (Hôtel Provinces Opéra)", price: 252.08, subDesc: "Semi privatisation pour l'accueil des ateliers" },
+                        { desc: "Location de salles ateliers (4 salles, Hôtel Provinces Opéra)", price: 2016.68, subDesc: "4 salles de réunion" },
+                        { desc: "Location de salle cérémonie et cocktail (Cirque d'Hiver)", price: 24200.00, subDesc: "Cirque d'Hiver, forfait journée incluant :\n- la salle du Cirque (chapiteau)\n- le Bar de l'Impératrice : cocktail\n- le régisseur du Cirque d'Hiver\n- les hôtesses du Cirque d'Hiver pour gérer le placement en salle et l'orientation du public\n- un agent du Cirque d'Hiver à l'entrée principale pendant les horaires publiques\n- le personnel d'entretien" },
+                        { desc: "Nuitée Chambre individuelle Confort", price: 3018.37, subDesc: "Hôtel Provinces Opéra\nChambre Supérieure Single BB, petit-déjeune inclus" },
+                        { desc: "Nuitée Chambre individuelle Privilège", price: 1352.97, subDesc: "Hôtel Provinces Opéra\nChambre Supérieure Single BB, petit-déjeune inclus" },
+                        { desc: "Nuitée Chambre double Confort à usage individuel", price: 9019.82, subDesc: "Hôtel Provinces Opéra\nChambre Supérieure Single BB, petit-déjeune inclus" },
                         { desc: "Taxe de séjour (60 pax)", price: 331.80 }
                     ],
                     restauration: [
-                        { desc: "Déjeuner d'équipe Hôtel Provinces Opéra", price: 527.98 },
-                        { desc: "Café d'accueil ateliers", price: 395.67 },
-                        { desc: "Pause gourmande ateliers", price: 659.93 },
-                        { desc: "Cocktail dînatoire - repas et softs", price: 10285.00 },
-                        { desc: "Cocktail dînatoire - boissons alcoolisées", price: 653.40 },
-                        { desc: "Cocktail - matériel et logistique", price: 5033.60 },
+                        { desc: "Déjeuner d'équipe Hôtel Provinces Opéra", price: 527.98, subDesc: "2 plats, eaux, café" },
+                        { desc: "Café d'accueil ateliers", price: 395.67, subDesc: "Boissons chaudes, jus de fruits, mignardises" },
+                        { desc: "Pause gourmande ateliers", price: 659.93, subDesc: "Boissons chaudes, jus de fruits, verrines de fruits frais et mignardises maison" },
+                        { desc: "Cocktail dînatoire - repas et softs", price: 10285.00, subDesc: "18 pièces avec animations culinaires, rafraichissements inclus" },
+                        { desc: "Cocktail dînatoire - boissons alcoolisées", price: 653.40, subDesc: "Vins (1 bouteille pour 4 personnes)" },
+                        { desc: "Cocktail - matériel et logistique", price: 5033.60, subDesc: "Matériel complet, art de la table et logistique" },
                         { desc: "Cocktail - personnel de service", price: 5783.80 },
-                        { desc: "Cocktail - champagne (Option)", price: 1694.00 },
-                        { desc: "Cocktail ateliers culinaires (Option)", price: 3388.00 }
+                        { desc: "Cocktail - champagne (Option)", price: 1694.00, subDesc: "1 bouteille pour 6 personnes" },
+                        { desc: "Cocktail ateliers culinaires (Option)", price: 3388.00, subDesc: "1 cocotte chaude (en remplacement du plat chaud) et 1 pièce lunch sucrée (en complément du menu)\nMatériel de service et personnel inclus" }
                     ],
                     technique: [
-                        { desc: "Consommation gaz/électricité", price: 605.00 },
-                        { desc: "Toiles tendues (Option)", price: 2420.00 },
-                        { desc: "Projection sur toiles tendues (Option)", price: 1562.11 },
-                        { desc: "Forfait technique sonorisation et lumières", price: 13631.86 },
-                        { desc: "Forfait technique vidéo", price: 6688.28 },
+                        { desc: "Consommation gaz/électricité", price: 605.00, subDesc: "Cirque d'Hiver, forfait par jour de location" },
+                        { desc: "Toiles tendues (Option)", price: 2420.00, subDesc: "Cirque d'Hiver, projection sur les fauteuils à gauche et à droite de l'entrée des Artistes" },
+                        { desc: "Projection sur toiles tendues (Option)", price: 1562.11, subDesc: "2 gobos pour projection" },
+                        { desc: "Forfait technique sonorisation et lumières", price: 13631.86, subDesc: "Matériel, consommables, logistique et personnel" },
+                        { desc: "Forfait technique vidéo", price: 6688.28, subDesc: "Matériel, consommables, logistique et personnel" },
                         { desc: "Topeur", price: 1875.00 },
-                        { desc: "Forfait mobilier scénique", price: 0.00 },
+                        { desc: "Forfait mobilier scénique", price: 0.00, subDesc: "Offert" },
                         { desc: "Réseau wifi (Option)", price: 3388.00 },
                         { desc: "Transport de matériel", price: 150.00 },
-                        { desc: "Equipe de sécurité", price: 1060.69 },
-                        { desc: "Hôtes(ses) vestiaire et accueil", price: 2662.00 },
-                        { desc: "Matériel vestiaire", price: 592.90 },
-                        { desc: "Infographiste (Option)", price: 600.00 }
+                        { desc: "Equipe de sécurité", price: 1060.69, subDesc: "De 17h30 à 23h30" },
+                        { desc: "Hôtes(ses) vestiaire et accueil", price: 2662.00, subDesc: "4 hôtes(ses)" },
+                        { desc: "Matériel vestiaire", price: 592.90, subDesc: "Cirque d'Hiver" },
+                        { desc: "Infographiste (Option)", price: 600.00, subDesc: "Tarif à partir de 600€ HT\nInfographie du contenu de la cérémonie" }
                     ],
                     transports: [
-                        { desc: "Provision transports", price: 6000.00 },
-                        { desc: "Frais de gestion des transports", price: 1800.00 }
+                        { desc: "Provision transports", price: 6000.00, subDesc: "Billets d’avion, de train et réservation de taxi\nA ajuster au réel (prix des billets et frais d'émission des billets)" },
+                        { desc: "Frais de gestion des transports", price: 1800.00, subDesc: "3 jours de gestion" }
                     ],
                     extras: [
-                        { desc: "Animation numéro de Cirque", price: 3630.00 },
-                        { desc: "Animation groupe musical (Jazz New Orleans)", price: 2420.00 },
-                        { desc: "Badges", price: 325.00 },
-                        { desc: "Photobooth", price: 1613.13 },
-                        { desc: "Création graphique", price: 400.00 },
-                        { desc: "Cadeaux - Cartes à jouer", price: 1675.85 },
-                        { desc: "Sac kraft", price: 212.50 }
+                        { desc: "Animation numéro de Cirque", price: 3630.00, subDesc: "A définir ensemble (musique sur bande son, certains numéros requièrent l'aide de garçons de piste, un budget supplémentaire est à prévoir)" },
+                        { desc: "Animation groupe musical (Jazz New Orleans)", price: 2420.00, subDesc: "2 heures de prestation" },
+                        { desc: "Badges", price: 325.00, subDesc: "Badges sur papier recyclé pour 200 personnes" },
+                        { desc: "Photobooth", price: 1613.13, subDesc: "Borne photo avec technologie IA et habillage personnalisé" },
+                        { desc: "Création graphique", price: 400.00, subDesc: "Badges, affiches, invitations (hors impression, 2 aller-retours pour modification inclus)" },
+                        { desc: "Cadeaux - Cartes à jouer", price: 1675.85, subDesc: "Cartes à jouer personnalisées, infographie et frais de port inclus" },
+                        { desc: "Sac kraft", price: 212.50, subDesc: "Pour la remise du cadeau\nPersonnalisé" }
                     ],
                     accompagnement: [
-                        { desc: "Temps homme Weever", price: 3600.00 },
-                        { desc: "VRH - Restauration", price: 120.00 },
-                        { desc: "VHR - Transport", price: 195.00 },
-                        { desc: "Frais de repérage", price: 400.00 }
+                        { desc: "Temps homme Weever", price: 3600.00, subDesc: "Présence de 3 Weevers pour la gestion de votre événement" },
+                        { desc: "VRH - Restauration", price: 120.00, subDesc: "Déjeuner et dîner des Weevers sur l'événement" },
+                        { desc: "VHR - Transport", price: 195.00, subDesc: "Transport des Weevers" },
+                        { desc: "Frais de repérage", price: 400.00, subDesc: "1 Weever sur les lieux de votre choix" }
                     ]
                 }
             }
@@ -294,14 +316,14 @@
 
         const ComparisonView = () => {
             const venues = Object.values(budgetData);
-            
+
             // Sort venues by total price (ascending) to find the cheapest
             const sortedVenues = [...venues].sort((a, b) => a.totalHT - b.totalHT);
             const maxTotalHT = Math.max(...venues.map(v => v.totalHT));
 
             return (
                 <div className="space-y-8 animate-fade-in">
-                    
+
                     {/* Top KPI Cards */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {venues.map((venue) => {
@@ -323,7 +345,7 @@
                     {/* Visual Bar Chart */}
                     <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                         <h3 className="text-lg font-semibold text-gray-900 mb-6">Répartition par catégorie (HT)</h3>
-                        
+
                         <div className="space-y-6">
                             {venues.map(venue => (
                                 <div key={venue.id}>
@@ -336,7 +358,7 @@
                                         {Object.entries(venue.categories).map(([catKey, catValue]) => {
                                             const percentage = (catValue / maxTotalHT) * 100;
                                             return (
-                                                <div 
+                                                <div
                                                     key={catKey}
                                                     className={`h-full ${categoryColors[catKey]} group relative cursor-pointer border-r border-white/20 last:border-0`}
                                                     style={{ width: `${percentage}%` }}
@@ -344,7 +366,7 @@
                                                     {/* Tooltip */}
                                                     <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs rounded py-1 px-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10 whitespace-nowrap">
                                                         {categoryLabels[catKey]}: {formatEur(catValue)} HT
-                                                        <svg className="absolute text-gray-900 h-2 w-full left-0 top-full" x="0px" y="0px" viewBox="0 0 255 255"><polygon className="fill-current" points="0,0 127.5,127.5 255,0"/></svg>
+                                                        <svg className="absolute text-gray-900 h-2 w-full left-0 top-full" x="0px" y="0px" viewBox="0 0 255 255"><polygon className="fill-current" points="0,0 127.5,127.5 255,0" /></svg>
                                                     </div>
                                                 </div>
                                             );
@@ -353,7 +375,7 @@
                                 </div>
                             ))}
                         </div>
-                        
+
                         {/* Legend */}
                         <div className="mt-6 flex flex-wrap gap-4 pt-4 border-t border-gray-100">
                             {Object.entries(categoryLabels).map(([key, label]) => (
@@ -401,7 +423,7 @@
                                             </tr>
                                         )
                                     })}
-                                    
+
                                     {/* Honoraires Row */}
                                     <tr className="bg-gray-50 border-t-2 border-gray-200">
                                         <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Honoraires Agence (10%)</td>
@@ -411,7 +433,7 @@
                                             </td>
                                         ))}
                                     </tr>
-                                    
+
                                     {/* Totals Row HT */}
                                     <tr className="bg-sky-50 border-t border-sky-200">
                                         <td className="px-6 py-4 whitespace-nowrap font-bold text-sky-900">TOTAL HT</td>
@@ -424,7 +446,7 @@
                                             );
                                         })}
                                     </tr>
-                                    
+
                                     {/* Sub Totals Row TTC */}
                                     <tr className="bg-sky-50/50">
                                         <td className="px-6 py-3 whitespace-nowrap text-sm text-sky-700">Total TTC</td>
@@ -438,7 +460,7 @@
                             </table>
                         </div>
                     </div>
-                    
+
                 </div>
             );
         };
@@ -449,7 +471,7 @@
 
             return (
                 <div className="space-y-6 animate-fade-in">
-                    
+
                     <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                         <div>
                             <h2 className="text-2xl font-bold text-gray-900">{venue.name}</h2>
@@ -463,7 +485,7 @@
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                        
+
                         {/* List Breakdown */}
                         <div className="lg:col-span-2 space-y-4">
                             {Object.entries(venue.categories).map(([catKey, catValue]) => {
@@ -487,14 +509,21 @@
                                                 <p className="text-xs text-gray-500">HT</p>
                                             </div>
                                         </div>
-                                        
+
                                         {/* Lignes de détail */}
                                         {venue.details && venue.details[catKey] && (
-                                            <div className="mt-2 pt-4 border-t border-gray-100 space-y-2">
+                                            <div className="mt-2 pt-4 border-t border-gray-100 space-y-3">
                                                 {venue.details[catKey].map((item, idx) => (
-                                                    <div key={idx} className="flex justify-between items-end text-sm">
-                                                        <span className="text-gray-600">{item.desc}</span>
-                                                        <span className="text-gray-900 font-medium whitespace-nowrap ml-4">{formatEur(item.price)}</span>
+                                                    <div key={idx} className="flex flex-col text-sm border-b border-gray-50 pb-2 last:border-0 last:pb-0">
+                                                        <div className="flex justify-between items-start gap-4">
+                                                            <span className="text-gray-800 font-medium">{item.desc}</span>
+                                                            <span className="text-gray-900 font-bold whitespace-nowrap">{formatEur(item.price)}</span>
+                                                        </div>
+                                                        {item.subDesc && (
+                                                            <div className="text-gray-500 text-xs mt-1 italic leading-relaxed whitespace-pre-line pr-16">
+                                                                {item.subDesc}
+                                                            </div>
+                                                        )}
                                                     </div>
                                                 ))}
                                             </div>
@@ -502,7 +531,7 @@
                                     </div>
                                 );
                             })}
-                            
+
                             <div className="bg-gray-50 rounded-lg border border-gray-200 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                                 <div>
                                     <h4 className="font-semibold text-gray-900">Honoraires Weever (10%)</h4>
@@ -541,7 +570,7 @@
                                         <span>{formatEur(venue.totalTTC)}</span>
                                     </div>
                                 </div>
-                                
+
                                 <div className="mt-6 bg-blue-50 text-blue-800 text-xs p-3 rounded border border-blue-100">
                                     <strong>Note:</strong> Les montants indiqués (notamment les transports) sont provisionnels et seront ajustés au réel.
                                 </div>
@@ -568,17 +597,17 @@
                                     </h1>
                                     <p className="text-sm text-gray-500">Comparateur interactif de propositions événementielles</p>
                                 </div>
-                                
+
                                 {/* Navigation Tabs */}
                                 <div className="flex space-x-1 bg-gray-100 p-1 rounded-lg overflow-x-auto">
-                                    <button 
+                                    <button
                                         onClick={() => setActiveTab('compare')}
                                         className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md whitespace-nowrap transition-colors ${activeTab === 'compare' ? 'bg-white text-sky-600 shadow-sm' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-200'}`}
                                     >
                                         <IconChart /> Vue Comparée
                                     </button>
                                     {Object.values(budgetData).map(venue => (
-                                        <button 
+                                        <button
                                             key={venue.id}
                                             onClick={() => setActiveTab(venue.id)}
                                             className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md whitespace-nowrap transition-colors ${activeTab === venue.id ? 'bg-white text-sky-600 shadow-sm' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-200'}`}
@@ -604,4 +633,5 @@
         root.render(<App />);
     </script>
 </body>
+
 </html>
